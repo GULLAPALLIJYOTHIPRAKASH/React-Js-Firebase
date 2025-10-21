@@ -15,9 +15,7 @@ function Profile(){
 
         await Logout();
         console.log("logout");
-        
-
-        navigate("/" ,{replace : true});
+        navigate("/" , {replace : true});
 
 
     }

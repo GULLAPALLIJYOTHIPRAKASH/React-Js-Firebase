@@ -16,7 +16,6 @@ function App(){
         <Route path='/'  element={<SignUp/>} />
         <Route path='/login'  element={<Login/>} />
         <Route path='/profile' element={<PrivateRoute> <Profile/> </PrivateRoute> } />
-        {/* <Route path='/profile' element={ <Profile/>  } /> */}
       </Routes>
       </AuthContextProvider>
 

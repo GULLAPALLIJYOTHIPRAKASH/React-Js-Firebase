@@ -47,7 +47,7 @@ function Login(){
                     <label htmlFor="password">Password :</label>
                     <input onChange={(e) => setPwd(e.target.value)} value={pwd} type="password" name="password" id="password" placeholder="Enter password" />
                 </div>
-                <button  className="signup-btn">Create Account</button>
+                <button  className="signup-btn">Login</button>
                 
             </form>
         </div>

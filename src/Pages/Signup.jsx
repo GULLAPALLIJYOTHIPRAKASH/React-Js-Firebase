@@ -13,10 +13,6 @@ function SignUp(){
     const navigate = useNavigate();  
     const location = useLocation(); 
     
-    console.log(location);
-    
-    
-
 
     const handleAuth = async (e) => {
 

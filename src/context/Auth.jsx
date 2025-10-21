@@ -2,31 +2,34 @@ import React , { useContext, useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import { onAuthStateChanged , createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
-const AuthContext= React.createContext(null);
+const AuthContext= React.createContext();
 
 
 export const AuthContextProvider = ({children}) => {
 
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState({});
 
 
 
-    const signUp = async (email, pwd) => {
-
-        return await createUserWithEmailAndPassword(auth, email , pwd );
-
-    }
-
-    const Logout =async () => {
-
-       return  await signOut(auth);
-
+    // account creation
+    const signUp =  (email, pwd) => {
+        
+        return  createUserWithEmailAndPassword(auth, email , pwd );
 
     }
 
-    const Login = async (email , pwd) => {
+    // account logout
+    const Logout = () => {
 
-       return await signInWithEmailAndPassword(auth ,email , pwd);
+       return   signOut(auth);
+
+
+    }
+
+    // account login
+    const Login =  (email , pwd) => {
+
+       return  signInWithEmailAndPassword(auth ,email , pwd);
 
 
 
@@ -39,10 +42,14 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
 
+
+        // Get user based on authstatechange
         const checkauth = onAuthStateChanged(auth , (currentuser) => {
 
 
             setUser(currentuser);
+            console.log(currentuser);
+            
             
         })
 
@@ -57,6 +64,7 @@ export const AuthContextProvider = ({children}) => {
 }
 
 
+// custom hook
 export const useAuth =() => {
 
     return useContext(AuthContext);

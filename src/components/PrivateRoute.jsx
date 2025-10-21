@@ -7,13 +7,13 @@ function PrivateRoute({children}){
 
     
 
-    if(user){
+    if(!user){
 
-      return children 
+      return (<Navigate to="/" />); 
     }
     
 
-    return  <Navigate to="/" /> ;
+    return ( children);
     
 }
 
